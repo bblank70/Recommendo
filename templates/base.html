@@ -129,12 +129,80 @@
             </div>
         </div>
         <div class="col py-3">
+		<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th scope="col">Business Name</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Address</th>
+      <!-- <th scope="col">Photo</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr> {{with index . 1}}
+      <th scope="row">{{.BusinessName}}</th>
+      <td> &nbsp {{.Rating}} Stars </td>
+      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
+      <!-- <td> <img src= {{.Photo}}> </td> -->
+	  
+    </tr> {{end}}
+    <tr> {{with index . 1}}
+      <th scope="row">{{.BusinessName}}</th>
+      <td> &nbsp {{.Rating}} Stars </td>
+      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
+      <!-- <td> <img src= {{.Photo}}> </td> -->
+	 
+    </tr> {{end}}
+	    <tr> {{with index . 2}}
+      <th scope="row">{{.BusinessName}}</th>
+      <td> &nbsp {{.Rating}} Stars </td>
+      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
+      <!-- <td> <img src= {{.Photo}}> </td> -->
+	  
+    </tr> {{end}}
+    <tr> {{with index . 3}}
+      <th scope="row">{{.BusinessName}}</th>
+      <td> &nbsp {{.Rating}} Stars </td>
+      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
+      <!-- <td> <img src= {{.Photo}}> </td> -->
+	  
+    </tr> {{end}}
+	    <tr> {{with index . 4}}
+      <th scope="row">{{.BusinessName}}</th>
+      <td> &nbsp {{.Rating}} Stars </td>
+      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
+      <!-- <td> <img src= {{.Photo}}> </td> -->
+	 
+    </tr>{{end}}
+  </tbody>
+</table>
 		
-		
-            <h1> {{.}}!</h>
+
+			
+
+</div>
+			<!-- {{with index . 0}} <br> -->
+			
+<!-- <!-- figure out how to get photo in here -->
+<!-- {{.BusinessName}} <br> -->
+<!-- {{.Rating}} Stars <br> -->
+<!-- {{.Address}} -->
+<!-- {{.City}} , -->
+<!-- {{.State}} -->
+			<!-- {{end}}		 -->
 			
 			
-			
+    </div>
+</div>
+
+  <!-- Here I show the first struct values -->
+
+
+
+
+  <!-- Here I show the second struct values -->
+
+
 			
         </div>
     </div>
