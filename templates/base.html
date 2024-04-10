@@ -131,7 +131,7 @@
         <div class="col py-3">
        
           {{range $index, $element := .}}
-         <p>Restaurant: {{$element.BusinessName}}  | Rating: {{$element.Rating}}    | Address: {{$element.Address}}  {{$element.City}}, {{$element.State}} </p> 
+         <p> <img src="{{.Photopath}}" height=5% width=5% alt="Photo"> Restaurant: {{.BusinessName}}  | Rating: {{.Rating}}    | Address: {{.Address}}  {{.City}}, {{.State}} </p> 
 
 
           {{end}}
