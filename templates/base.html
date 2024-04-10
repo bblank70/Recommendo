@@ -129,54 +129,13 @@
             </div>
         </div>
         <div class="col py-3">
-		<table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">Business Name</th>
-      <th scope="col">Rating</th>
-      <th scope="col">Address</th>
-      <!-- <th scope="col">Photo</th> -->
-    </tr>
-  </thead>
-  <tbody>
-    <tr> {{with index . 1}}
-      <th scope="row">{{.BusinessName}}</th>
-      <td> &nbsp {{.Rating}} Stars </td>
-      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
-      <!-- <td> <img src= {{.Photo}}> </td> -->
-	  
-    </tr> {{end}}
-    <tr> {{with index . 1}}
-      <th scope="row">{{.BusinessName}}</th>
-      <td> &nbsp {{.Rating}} Stars </td>
-      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
-      <!-- <td> <img src= {{.Photo}}> </td> -->
-	 
-    </tr> {{end}}
-	    <tr> {{with index . 2}}
-      <th scope="row">{{.BusinessName}}</th>
-      <td> &nbsp {{.Rating}} Stars </td>
-      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
-      <!-- <td> <img src= {{.Photo}}> </td> -->
-	  
-    </tr> {{end}}
-    <tr> {{with index . 3}}
-      <th scope="row">{{.BusinessName}}</th>
-      <td> &nbsp {{.Rating}} Stars </td>
-      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
-      <!-- <td> <img src= {{.Photo}}> </td> -->
-	  
-    </tr> {{end}}
-	    <tr> {{with index . 4}}
-      <th scope="row">{{.BusinessName}}</th>
-      <td> &nbsp {{.Rating}} Stars </td>
-      <td>&nbsp {{.Address}} {{.City}} , {{.State}}</td>
-      <!-- <td> <img src= {{.Photo}}> </td> -->
-	 
-    </tr>{{end}}
-  </tbody>
-</table>
-		
+       
+          {{range $index, $element := .}}
+         <p>Restaurant: {{$element.BusinessName}}  | Rating: {{$element.Rating}}    | Address: {{$element.Address}}  {{$element.City}}, {{$element.State}} </p> 
+
+
+          {{end}}
+
 
 			
 
