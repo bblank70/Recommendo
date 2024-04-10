@@ -38,7 +38,7 @@ func init() {
 
 func main() {
 
-	jsonFile, err := os.Open("C:/Users/querc/Documents/Northwestern/Northwestern MSDS/MSDS498 - Capstone/response.json")
+	jsonFile, err := os.Open("./templates/static/response.json")
 
 	// if we os.Open returns an error then handle it
 	if err != nil {
