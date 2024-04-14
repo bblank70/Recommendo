@@ -9,8 +9,10 @@ import (
 	"path/filepath"
 )
 
+// //currently app runs in debug mode with RenderTemplate, in production, switch to RenderCachedTemplate in handlers.go
 func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html")
+	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html",
+		"./templates/empty.layout.html")
 	err := parsedTemplate.Execute(w, nil)
 	if err != nil {
 		fmt.Println("error parsing template:", err)

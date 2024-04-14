@@ -84,6 +84,8 @@ func main() {
 	}
 
 	// these are our paths
+	http.HandleFunc("/", handlers.Index)
+
 	http.HandleFunc("/recs", handlers.Recs)
 
 	// //this starts the server
