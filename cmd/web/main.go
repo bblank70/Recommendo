@@ -28,6 +28,19 @@ var Resultslice []Business
 
 func main() {
 
+	/////TODO - switch to cached templates
+	///////This was implementing the cached templates
+
+	// var app config.AppConfig
+
+	// tc := render.CreateTemplateCache("base.html")
+
+	// if err != nil {
+	// 	log.Fatal("cannot create Template cache")
+	// }
+
+	// app.TemplateCache = tc
+	///////////
 	jsonFile, err := os.Open("./templates/static/response.json")
 
 	// if we os.Open returns an error then handle it
@@ -59,19 +72,19 @@ func main() {
 
 		Resultslice = append(Resultslice, bizrecord)
 
-		// 	// fmt.Println("BusinessID: " + recommendations.Business[i].BusinessID)
-		// 	// fmt.Println("BusinessName: " + recommendations.Business[i].BusinessName)
-		// 	// fmt.Println("Address: " + recommendations.Business[i].Address)
-		// 	// fmt.Println("City: " + recommendations.Business[i].City)
-		// 	// fmt.Println("State: " + recommendations.Business[i].State)
-		// 	// fmt.Println("Zipcode: " + strconv.Itoa(recommendations.Business[i].Zipcode))
-		// 	// fmt.Println("Rating: " + strconv.FormatFloat(recommendations.Business[i].Rating, 'f', -1, 64))
-		// 	// fmt.Println("Photo: " + recommendations.Business[i].Photopath)
+		// fmt.Println("BusinessID: " + recommendations.Business[i].BusinessID)
+		// fmt.Println("BusinessName: " + recommendations.Business[i].BusinessName)
+		// fmt.Println("Address: " + recommendations.Business[i].Address)
+		// fmt.Println("City: " + recommendations.Business[i].City)
+		// fmt.Println("State: " + recommendations.Business[i].State)
+		// fmt.Println("Zipcode: " + strconv.Itoa(recommendations.Business[i].Zipcode))
+		// fmt.Println("Rating: " + strconv.FormatFloat(recommendations.Business[i].Rating, 'f', -1, 64))
+		// fmt.Println("Photo: " + recommendations.Business[i].Photopath)
 
 	}
 
 	// these are our paths
-	http.HandleFunc("/", handlers.Index)
+	http.HandleFunc("/recs", handlers.Recs)
 
 	// //this starts the server
 	http.ListenAndServe(":6060", nil)
