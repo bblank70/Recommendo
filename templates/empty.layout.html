@@ -17,13 +17,32 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
+
 
     .center {
       display: block;
-      margin-left: auto;
+      margin-left: 20%;
       margin-right: auto;
+      height: 50%;
       width: 50%;
+    }
+
+    .centered-wrapper {
+    position: relative;
+    text-align: center;
+    }
+
+
+  
+
+    .content {
+        text-align: center;
     }
 
 
@@ -32,13 +51,17 @@
   
 </head>
 
-<body>
-
+<body >
+  <div class="content">
+    <div class="center">
     {{block "content" .}}
     {{end}}
 
     {{block "js" .}}
     {{end}}
+
+    </div>
+  </div>
 
 </body>
 
