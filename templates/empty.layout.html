@@ -12,6 +12,11 @@
  <title> Conceirge </title>
   <link rel="icon" type="images/x-icon" href="https://github.com/bblank70/Recommendo/blob/main/templates/static/ServingDish.jpg?raw=true" />
   <style>
+
+    ::placeholder {
+        font-size: 12px; /* Adjust the font size as needed */
+    }
+
     body {
       background-image: url("https://github.com/bblank70/Recommendo/blob/reafactor2pkg/templates/static/bkg.png?raw=true");
       background-repeat: no-repeat;
@@ -25,20 +30,12 @@
     }
 
 
-    .center {
+    /* .center {
       display: block;
-      margin-left: 20%;
       margin-right: auto;
       height: 50%;
       width: 50%;
-    }
-
-    .centered-wrapper {
-    position: relative;
-    text-align: center;
-    }
-
-
+    } */
   
 
     .content {
@@ -53,16 +50,13 @@
 
 <body >
   <div class="content">
-    <div class="center">
+
     {{block "content" .}}
     {{end}}
 
     {{block "js" .}}
     {{end}}
-
-    </div>
   </div>
-
 </body>
 
 
