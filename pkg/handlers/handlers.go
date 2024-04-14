@@ -7,7 +7,7 @@ import (
 
 // index is the home page handler
 func Recs(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "base.page.html") ///used for debugging templates
+	render.RenderTemplate(w, "recs.page.html") ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 

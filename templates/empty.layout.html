@@ -1,0 +1,76 @@
+{{define "empty"}}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+ <title> Conceirge </title>
+  <link rel="icon" type="images/x-icon" href="https://github.com/bblank70/Recommendo/blob/main/templates/static/ServingDish.jpg?raw=true" />
+  <style>
+    body {
+      /* background-color: rgb(149, 182, 205 );  */
+      background-image: url('img_girl.jpg');
+      height: 100%;
+      font-size: 80%;
+    }
+
+    p {
+      font-size: 100%;
+      padding-top: 0;
+    }
+
+    legend {
+      font-size: 100%;
+      font-weight: bold;
+    }
+
+    strong {
+      font-weight: bold;
+      font-size: 110%;
+    }
+
+    a {
+      color: rgb(148, 176, 49);
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+
+
+
+
+
+  </style>
+
+  
+</head>
+
+<body>
+
+
+
+
+
+        
+    {{block "content" .}}
+    {{end}}
+
+    {{block "js" .}}
+    {{end}}
+
+</body>
+
+
+</html>
+{{end}}
+
+
