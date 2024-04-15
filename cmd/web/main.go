@@ -84,7 +84,12 @@ func main() {
 	}
 
 	// these are our paths
-	http.HandleFunc("/", handlers.Index)
+	http.HandleFunc("/", handlers.Home)
+	http.HandleFunc("/ethnic", handlers.Ethnic)
+	http.HandleFunc("/drinks", handlers.AlcoholAndDrinks)
+	http.HandleFunc("/coffee", handlers.Coffee)
+	http.HandleFunc("/popular", handlers.Popular)
+	http.HandleFunc("/new", handlers.New)
 
 	http.HandleFunc("/recs", handlers.Recs)
 
