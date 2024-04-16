@@ -90,6 +90,7 @@ func main() {
 	http.HandleFunc("/coffee", handlers.Coffee)
 	http.HandleFunc("/popular", handlers.Popular)
 	http.HandleFunc("/new", handlers.New)
+	// http.HandleFunc("request", handlers.Request)
 
 	http.HandleFunc("/recs", handlers.Recs)
 

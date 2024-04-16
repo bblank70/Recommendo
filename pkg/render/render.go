@@ -2,6 +2,7 @@ package render
 
 import (
 	"bytes"
+	"concierge/pkg/models"
 	"fmt"
 	"html/template"
 	"log"
@@ -9,11 +10,19 @@ import (
 	"path/filepath"
 )
 
+func AddDefaultData(td *models.TemplateData) *models.TemplateData {
+
+	return td
+}
+
 // //currently app runs in debug mode with RenderTemplate, in production, switch to RenderCachedTemplate in handlers.go
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
+func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html",
 		"./templates/empty.layout.html")
-	err := parsedTemplate.Execute(w, nil)
+
+	td = AddDefaultData(td)
+
+	err := parsedTemplate.Execute(w, td)
 	if err != nil {
 		fmt.Println("error parsing template:", err)
 		return
@@ -58,11 +67,13 @@ func RenderTemplate(w http.ResponseWriter, tmpl string) {
 // 		return err
 // 	}
 
-// 	tc[t] = tmpl
-// 	return nil
-// }
+//		tc[t] = tmpl
+//		return nil
+//	}
 
-func RenderCachedTemplates(w http.ResponseWriter, tmpl string) {
+// Add Default Data is for Data that we need to have available at every page.
+
+func RenderCachedTemplates(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	//create a template cache
 	tc, err := CreateTemplateCache()
 
@@ -78,7 +89,9 @@ func RenderCachedTemplates(w http.ResponseWriter, tmpl string) {
 
 	buf := new(bytes.Buffer)
 
-	err = t.Execute(buf, nil)
+	td = AddDefaultData(td)
+
+	err = t.Execute(buf, td)
 
 	if err != nil {
 		log.Println(err)
