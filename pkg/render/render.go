@@ -30,6 +30,18 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 
 }
 
+func RenderRecTemplate(w http.ResponseWriter, tmpl string, businessmodel *[]models.Business) {
+	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html",
+		"./templates/empty.layout.html")
+
+	err := parsedTemplate.Execute(w, &businessmodel)
+	if err != nil {
+		fmt.Println("error parsing template:", err)
+		return
+	}
+
+}
+
 // var tc = make(map[string]*template.Template)
 
 // func RenderCachedTemplates(w http.ResponseWriter, t string) {

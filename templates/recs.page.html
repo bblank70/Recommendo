@@ -1,28 +1,18 @@
 {{template "allpage" .}}
 
 {{define "content"}}
-<div class = "container">
-  <div class = "row">
-    <div class = "col">
-      <h1 class = "mt-5">This is the Recommendations Page!</h1>
-    </div>
-  </div>
-</div>
-
 
 
 <div class = "container">
   <div class = "row">
         <div class = "col">
 {{range $index, $element := .}}
-<p> <img src="{{.Photopath}}" height=5% width=5% alt="Photo"> Restaurant: {{.BusinessName}}  | Rating: {{.Rating}}    | Address: {{.Address}}  {{.City}}, {{.State}} </p> 
+<p> <img src="{{.Photopath}}" height=5% width=5% alt="Photo"> Restaurant: {{.BusinessName}}  | Rating: {{.Rating}}    | Address: {{.Address}}  {{.City}}, {{.State}}</p>
+{{end}}
         </div>
   </div>
 
 </div>
-
-
-   {{end}}
 
 
 {{end}}
