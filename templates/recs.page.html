@@ -1,0 +1,27 @@
+{{template "allpage" .}}
+
+{{define "content"}}
+
+
+<div class = "container">
+  <div class = "row">
+        <div class = "col">
+{{range $index, $element := .}}
+<p> <img src="{{.Photopath}}" height=5% width=5% alt="Photo"> Restaurant: {{.BusinessName}}  | Rating: {{.Rating}}    | Address: {{.Address}}  {{.City}}, {{.State}}</p>
+{{end}}
+        </div>
+  </div>
+
+</div>
+
+
+{{end}}
+	
+
+{{define "js"}}
+
+{{end}}
+
+
+
+</html>

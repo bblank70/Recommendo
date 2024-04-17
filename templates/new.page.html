@@ -1,0 +1,37 @@
+{{template "allpage" .}}
+
+{{define "content"}}
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+      <h1 class = "mt-5">This page is for places with few reviews!</h1>
+    </div>
+  </div>
+</div>
+
+
+
+<div class = "container">
+      <div class = "row">
+            <div class = "col">
+  {{range $index, $element := .}}
+  <p> <img src="{{.Photopath}}" height=5% width=5% alt="Photo"> Restaurant: {{.BusinessName}}  | Rating: {{.Rating}}    | Address: {{.Address}}  {{.City}}, {{.State}} </p> 
+            </div>
+      </div>
+   
+</div>
+
+
+   {{end}}
+
+
+{{end}}
+	
+
+{{define "js"}}
+
+{{end}}
+
+
+
+</html>
