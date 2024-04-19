@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 )
 
+// Add Default Data is for Data that we need to have available at every page.
 func AddDefaultData(td *models.TemplateData) *models.TemplateData {
-
 	return td
 }
 
@@ -30,7 +30,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 
 }
 
-func RenderRecTemplate(w http.ResponseWriter, tmpl string, businessmodel *[]models.Business) {
+func RenderRecTemplate(w http.ResponseWriter, tmpl string, businessmodel *models.Requeststruct) {
 	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html",
 		"./templates/empty.layout.html")
 
@@ -82,8 +82,6 @@ func RenderRecTemplate(w http.ResponseWriter, tmpl string, businessmodel *[]mode
 //		tc[t] = tmpl
 //		return nil
 //	}
-
-// Add Default Data is for Data that we need to have available at every page.
 
 func RenderCachedTemplates(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
 	//create a template cache

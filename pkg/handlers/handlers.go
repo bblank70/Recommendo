@@ -29,6 +29,8 @@ func Recs(w http.ResponseWriter, r *http.Request) {
 
 	byteValue, _ := io.ReadAll(jsonFile)
 	var recommendations models.Recommendations
+	var user string
+
 	json.Unmarshal(byteValue, &recommendations)
 
 	for i := 0; i < len(recommendations.Business); i++ {
@@ -42,15 +44,23 @@ func Recs(w http.ResponseWriter, r *http.Request) {
 			Rating:       recommendations.Business[i].Rating,
 			Photopath:    recommendations.Business[i].Photopath,
 		}
+		user = recommendations.Business[i].User
+
 		Resultslice = append(Resultslice, bizrecord)
 	}
 	fmt.Println(Resultslice)
+
+	request := models.Requeststruct{
+		User:     user,
+		Business: Resultslice,
+	}
+
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
 	// render.RenderTemplate(w, "base.html", Dataslice)
 	// tpl.ExecuteTemplate(w, "base.html", Dataslice)
 
-	render.RenderRecTemplate(w, "recs.page.html", &Resultslice)
+	render.RenderRecTemplate(w, "recs.page.html", &request)
 
 }
 
@@ -63,8 +73,8 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	// tpl.ExecuteTemplate(w, "base.html", Dataslice)
 }
 
-func Ethnic(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "ethnic.page.html", &models.TemplateData{}) ///used for debugging templates
+func Yelp(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "yelp-select.page.html", &models.TemplateData{}) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 

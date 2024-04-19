@@ -3,6 +3,7 @@ package models
 // TemplateData holds data from handlers to the templates/pages
 
 type Business struct {
+	User         string  `json:"user"`
 	BusinessID   string  `json:"business_id"`
 	BusinessName string  `json:"name"`
 	Address      string  `json:"address"`
@@ -26,4 +27,9 @@ type TemplateData struct {
 	Error     string
 	StringMap map[string]string
 	Business  []Business
+}
+
+type Requeststruct struct {
+	User     string
+	Business []Business
 }

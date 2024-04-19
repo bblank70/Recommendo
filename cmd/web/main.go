@@ -8,13 +8,12 @@ import (
 func main() {
 
 	http.HandleFunc("/", handlers.Home)
-	http.HandleFunc("/ethnic", handlers.Ethnic)
+	http.HandleFunc("/yelp-select", handlers.Yelp)
 	http.HandleFunc("/drinks", handlers.AlcoholAndDrinks)
 	http.HandleFunc("/coffee", handlers.Coffee)
 	http.HandleFunc("/popular", handlers.Popular)
 	http.HandleFunc("/new", handlers.New)
 	// http.HandleFunc("request", handlers.Request)
-
 	http.HandleFunc("/recs", handlers.Recs)
 
 	// //this starts the server
