@@ -1,7 +1,7 @@
 package models
 
-// TemplateData holds data from handlers to the templates/pages
-
+// Business is the struct containing data about businesses
+//Business structs are rendered on the various genre pages
 type Business struct {
 	User         string  `json:"user"`
 	BusinessID   string  `json:"business_id"`
@@ -14,22 +14,33 @@ type Business struct {
 	Photopath    string  `json:"hyperlink"`
 }
 
+// The Recommendatios struct will hold results returned from the Flask API
+// These are recommendations from the machine learning model
 type Recommendations struct {
 	Business []Business `json:"result"`
 }
 
+// TemplateData is a struct that holds data instantiated from the handlers and
+// passed into render such that content can be loaded dynamically on the pages.
 type TemplateData struct {
 	User      string
-	Data      map[string]interface{}
 	CSRFToken string
 	Message   string
 	Warning   string
 	Error     string
 	StringMap map[string]string
-	Business  []Business
+	Recs      []Business
+	Popular   []Business
+	Drinks    []Business
+	Coffee    []Business
+	New       []Business
+	Yelp      []Business
 }
 
-type Requeststruct struct {
-	User     string
-	Business []Business
-}
+// TODO: Build a struct for the dashboard page.
+
+// // RequestStruct is DEPRECATED
+// type Requeststruct struct {
+// 	User     string
+// 	Business []Business
+// }

@@ -10,9 +10,17 @@ import (
 	"os"
 )
 
-// index is the home page handler
+// Global Tempalte data
+var TD = models.TemplateData{}
+
+// Recs is the handler for the /recs page;
+// we'll need to get data from the model API inside this function and
+// overwrite the TD.Business field
+
 func Recs(w http.ResponseWriter, r *http.Request) {
 	var Resultslice []models.Business
+
+	// TODO: get this function to communicate with the API endpoint and replace this randomly generated content - move this to "yelp select"
 
 	jsonFile, err := os.Open("./templates/static/response.json")
 
@@ -50,22 +58,22 @@ func Recs(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println(Resultslice)
 
-	request := models.Requeststruct{
-		User:     user,
-		Business: Resultslice,
-	}
+	TD.User = user
+	TD.Recs = Resultslice
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
 	// render.RenderTemplate(w, "base.html", Dataslice)
 	// tpl.ExecuteTemplate(w, "base.html", Dataslice)
 
-	render.RenderRecTemplate(w, "recs.page.html", &request)
+	render.RenderRecTemplate(w, "recs.page.html", &TD)
 
 }
 
+// Handles request for the homepage; resets the user to empty string
 func Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "home.page.html", &models.TemplateData{}) ///used for debugging templates
+	TD.User = ""
+	render.RenderTemplate(w, "home.page.html", &TD) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
@@ -73,8 +81,12 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	// tpl.ExecuteTemplate(w, "base.html", Dataslice)
 }
 
+// Handles request for the yelp-select page
 func Yelp(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "yelp-select.page.html", &models.TemplateData{}) ///used for debugging templates
+
+	//TODO: Filter down a list of the yelp select restaurants
+
+	render.RenderTemplate(w, "yelp-select.page.html", &TD) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
@@ -83,7 +95,10 @@ func Yelp(w http.ResponseWriter, r *http.Request) {
 }
 
 func Coffee(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "coffee.page.html", &models.TemplateData{}) ///used for debugging templates
+
+	//TODO: Filter down a list of the yelp select restaurants to render in the coffee page
+
+	render.RenderTemplate(w, "coffee.page.html", &TD) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
@@ -92,7 +107,7 @@ func Coffee(w http.ResponseWriter, r *http.Request) {
 }
 
 func AlcoholAndDrinks(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "drinks.page.html", &models.TemplateData{}) ///used for debugging templates
+	render.RenderTemplate(w, "drinks.page.html", &TD) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
@@ -101,7 +116,7 @@ func AlcoholAndDrinks(w http.ResponseWriter, r *http.Request) {
 }
 
 func Popular(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "popular.page.html", &models.TemplateData{}) ///used for debugging templates
+	render.RenderTemplate(w, "popular.page.html", &TD) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
@@ -110,33 +125,10 @@ func Popular(w http.ResponseWriter, r *http.Request) {
 }
 
 func New(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "new.page.html", &models.TemplateData{}) ///used for debugging templates
+	render.RenderTemplate(w, "new.page.html", &TD) ///used for debugging templates
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
 
 	// render.RenderTemplate(w, "base.html", Dataslice)
 	// tpl.ExecuteTemplate(w, "base.html", Dataslice)
-}
-func Request(w http.ResponseWriter, r *http.Request) {
-
-	// params := url.Values{}
-	// params.Add("body", "This is a test message")
-
-	// params.Add("id", "1")
-
-	// resp, err := http.PostForm("https://jsonplaceholder.typicode.com/posts", params)
-	// if err != nil {
-	// 	log.Printf("Request Failed: %s", err)
-	// 	return
-	// }
-
-	// data := make(map[string]interface{})
-	// data["Data"] = resp
-
-	// fmt.Println(resp)
-
-	render.RenderTemplate(w, "request.page.html", &models.TemplateData{
-		// Data: data,
-	})
-
 }

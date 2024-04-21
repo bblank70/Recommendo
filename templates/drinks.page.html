@@ -1,5 +1,10 @@
 {{template "allpage" .}}
 
+{{define "user"}}
+{{.User}}
+{{end}}
+
+
 {{define "content"}}
 <div class = "container">
   <div class = "row">
@@ -10,20 +15,6 @@
 </div>
 
 
-
-<div class = "container">
-      <div class = "row">
-            <div class = "col">
-              
-  {{range $index, $element := .}}
-  <p> <img src="{{.Photopath}}" height=5% width=5% alt="Photo"> Restaurant: {{.BusinessName}}  | Rating: {{.Rating}}    | Address: {{.Address}}  {{.City}}, {{.State}} </p> 
-            </div>
-      </div>
-   
-</div>
-
-
-   {{end}}
 
 
 {{end}}
