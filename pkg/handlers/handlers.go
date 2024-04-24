@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"os"
+	"net/url"
 )
 
 // Global Tempalte data
@@ -18,31 +18,49 @@ var TD = models.TemplateData{}
 // overwrite the TD.Business field
 
 func Recs(w http.ResponseWriter, r *http.Request) {
-	var Resultslice []models.Business
+	var baseURL = "http://127.0.0.1:5000"
+	var resource = "/returnjson"
 
+	var Resultslice []models.Business
+	// jsonFile, err := os.Open("./templates/static/response.json")
 	// TODO: get this function to communicate with the API endpoint and replace this randomly generated content - move this to "yelp select"
 
-	jsonFile, err := os.Open("./templates/static/response.json")
-
-	// if we os.Open returns an error then handle it
-	if err != nil {
-		fmt.Println(err)
+	user := r.FormValue("User")
+	if user != "" {
+		TD.User = user
 	}
 
-	fmt.Println("Successfully Opened users.json")
-	// defer the closing of our jsonFile so that we can parse it later on
-	defer jsonFile.Close()
+	params := url.Values{}
+	params.Add("user", TD.User)
 
-	// byteValue, _ := ioutil.ReadAll(jsonFile)
+	u, _ := url.ParseRequestURI(baseURL)
+	u.Path = resource
+	u.RawQuery = params.Encode()
+	urlStr := fmt.Sprintf("%v", u)
+	resp, err := http.Get(urlStr)
 
-	byteValue, _ := io.ReadAll(jsonFile)
+	// resp, err := http.Get(posturl)
+	if err != nil {
+		fmt.Println("There was an error:", err)
+	}
+
+	fmt.Println(resp)
+
+	defer resp.Body.Close()
+
+	b, err := io.ReadAll(resp.Body)
+
+	if err != nil {
+		fmt.Println("There was an error recieving the body:", err)
+	}
+
 	var recommendations models.Recommendations
-	var user string
 
-	json.Unmarshal(byteValue, &recommendations)
+	json.Unmarshal(b, &recommendations)
 
 	for i := 0; i < len(recommendations.Business); i++ {
 		bizrecord := models.Business{
+			User:         recommendations.Business[i].User,
 			BusinessID:   recommendations.Business[i].BusinessID,
 			BusinessName: recommendations.Business[i].BusinessName,
 			Address:      recommendations.Business[i].Address,
@@ -52,13 +70,11 @@ func Recs(w http.ResponseWriter, r *http.Request) {
 			Rating:       recommendations.Business[i].Rating,
 			Photopath:    recommendations.Business[i].Photopath,
 		}
-		user = recommendations.Business[i].User
 
 		Resultslice = append(Resultslice, bizrecord)
 	}
 	fmt.Println(Resultslice)
 
-	TD.User = user
 	TD.Recs = Resultslice
 
 	// render.RenderCachedTemplates(w, "base.html") ///puts the template in production
