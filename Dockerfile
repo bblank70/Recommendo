@@ -15,6 +15,7 @@ RUN go build -o main
  
 # Tells Docker which network port your container listens on
 EXPOSE 6060
+EXPOSE 5000
  
 # Specifies the executable command that runs when the container starts
 CMD ["./main"]
