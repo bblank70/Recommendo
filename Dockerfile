@@ -17,5 +17,5 @@ RUN go build -o main
 EXPOSE 6060
  
 # Specifies the executable command that runs when the container starts
-CMD ["./"]
+CMD ["./main"]
 
