@@ -1,8 +1,9 @@
 package main
 
 import (
-	"concierge/pkg/handlers"
 	"net/http"
+
+	"github.com/bblank70/concierge/pkg/handlers"
 )
 
 func main() {

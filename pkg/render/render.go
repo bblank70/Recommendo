@@ -2,12 +2,13 @@ package render
 
 import (
 	"bytes"
-	"concierge/pkg/models"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/bblank70/concierge/pkg/models"
 )
 
 // Add Default Data is for Data that we need to have available at every page.

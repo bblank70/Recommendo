@@ -1,13 +1,14 @@
 package handlers
 
 import (
-	"concierge/pkg/models"
-	"concierge/pkg/render"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"net/url"
+
+	"github.com/bblank70/concierge/pkg/models"
+	"github.com/bblank70/concierge/pkg/render"
 )
 
 // Global Tempalte data
