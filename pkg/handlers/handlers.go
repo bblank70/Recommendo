@@ -19,7 +19,7 @@ var TD = models.TemplateData{}
 // overwrite the TD.Business field
 
 func Recs(w http.ResponseWriter, r *http.Request) {
-	var baseURL = "http:127.0.0.1:5000"
+	var baseURL = "https://recommendoapi-pitlxbolsa-uc.a.run.app/"
 	var resource = "/returnjson"
 
 	var Resultslice []models.Business
