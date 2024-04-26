@@ -10,15 +10,15 @@ COPY . .
 # Installs Go dependencies
 RUN go mod download
  
-WORKDIR /App/cmd/web
 
-# Builds your app with optional configuration
-RUN go build -o main .
+
+# Builds builds the binary
+RUN go build ./cmd/web/main.go
 
  
-# Tells Docker which network port your container listens on
+# Tells Docker which network port to listen
 EXPOSE 6060
-EXPOSE 5000
+
 
 # Specifies the executable command that runs when the container starts
 CMD ["./main"]

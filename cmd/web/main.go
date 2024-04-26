@@ -19,5 +19,6 @@ func main() {
 
 	// //this starts the server
 	http.ListenAndServe(":6060", nil)
+	println("Starting the server")
 
 }

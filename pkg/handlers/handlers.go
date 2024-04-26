@@ -35,6 +35,7 @@ func Recs(w http.ResponseWriter, r *http.Request) {
 	params.Add("user", TD.User)
 
 	u, _ := url.ParseRequestURI(baseURL)
+	fmt.Println("The uRL was:", u)
 	u.Path = resource
 	u.RawQuery = params.Encode()
 	urlStr := fmt.Sprintf("%v", u)
