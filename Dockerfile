@@ -1,7 +1,7 @@
 FROM golang:1.22-alpine
  
 # Creates an app directory to hold your app’s source code
-WORKDIR /App
+WORKDIR /app
  
 # Copies everything from your root directory into /App
 
@@ -13,7 +13,7 @@ RUN go mod download
 
 
 # Builds builds the binary
-RUN go build ./cmd/web/main.go
+RUN go build ./cmd/web/
 
  
 # Tells Docker which network port to listen
@@ -21,5 +21,5 @@ EXPOSE 6060
 
 
 # Specifies the executable command that runs when the container starts
-CMD ["./main"]
+CMD ["./web"]
 
