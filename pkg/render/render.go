@@ -43,6 +43,18 @@ func RenderRecTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateDa
 
 }
 
+func RenderDashTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
+	parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html",
+		"./templates/empty.layout.html")
+
+	err := parsedTemplate.Execute(w, &td)
+	if err != nil {
+		fmt.Println("error parsing template:", err)
+		return
+	}
+
+}
+
 //TODO: We're
 
 func RenderCachedTemplates(w http.ResponseWriter, tmpl string, td *models.TemplateData) {

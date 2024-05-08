@@ -16,6 +16,7 @@ func main() {
 	http.HandleFunc("/new", handlers.New)
 	// http.HandleFunc("request", handlers.Request)
 	http.HandleFunc("/recs", handlers.Recs)
+	http.HandleFunc("/dash", handlers.Dash)
 
 	// //this starts the server
 	http.ListenAndServe(":6060", nil)

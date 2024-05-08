@@ -35,12 +35,48 @@ type TemplateData struct {
 	Coffee    []Business
 	New       []Business
 	Yelp      []Business
+	DB        DashboardData
 }
 
-// TODO: Build a struct for the dashboard page.
+// TODO: WE NEED A TYPE FOR EVERY CHART/OBJECT
+type Barchart struct {
+	Star5 int `json:"5-Star"`
+	Star4 int `json:"4-Star"`
+	Star3 int `json:"3-Star"`
+	Star2 int `json:"2-Star"`
+	Star1 int `json:"1-Star"`
+}
 
-// // RequestStruct is DEPRECATED
-// type Requeststruct struct {
-// 	User     string
-// 	Business []Business
+var Dataslice []Barchart
+
+// type Collection struct {
+// 	Ratings    []Barchart       `json:"barchart"`
+// 	History    []BusinessRating `json:"recents"`
+// 	Indicators []KPI            `json:"KPI"`
 // }
+type Recents struct {
+	BusinessRating []BusinessRating `json:"recents"`
+}
+
+// type KPI struct {
+// 	MAE float64
+// }
+
+// geoslice and Geoslice allow for storage of the coordinates to map with leaflet
+type Geomap map[string]float64
+
+type BusinessRating struct {
+	BusinessName  string  `json:"name"`
+	PlatformStars float64 `json:"stars"`
+	YourRating    int64   `json:"YourRating"`
+	Latitude      float64 `json:"latitude"`
+	Longitude     float64 `json:"longitude"`
+	Photopath     string  `json:"hyperlink"`
+}
+
+type DashboardData struct {
+	Barchart Barchart
+	Geo      []Geomap
+	Recents  []BusinessRating
+	KPI      map[string]float64
+}
