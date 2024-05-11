@@ -15,13 +15,12 @@ import (
 var TD = models.TemplateData{}
 
 // endpoints for local debug
-var baseURL = "http://127.0.0.1:5000"
+// var baseURL = "http://127.0.0.1:5000"
+// endpoints for cloud production
+var baseURL = "https://recommendoapi-pitlxbolsa-uc.a.run.app/"
+
 var reqresource = "/returnjson"
 var dashresource = "/dashboard"
-
-//endpoints for cloud production
-// var baseURL = "https://recommendoapi-pitlxbolsa-uc.a.run.app/"
-// var resource = "/returnjson"
 
 // Recs is the handler for the /recs page;
 // we'll need to get data from the model API inside this function and
