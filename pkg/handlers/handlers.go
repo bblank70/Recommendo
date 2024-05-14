@@ -76,6 +76,7 @@ func Recs(w http.ResponseWriter, r *http.Request) {
 			Zipcode:      recommendations.Business[i].Zipcode,
 			Rating:       recommendations.Business[i].Rating,
 			Photopath:    recommendations.Business[i].Photopath,
+			Model:        recommendations.Business[i].Model,
 		}
 
 		Resultslice = append(Resultslice, bizrecord)

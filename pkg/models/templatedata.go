@@ -12,6 +12,7 @@ type Business struct {
 	Zipcode      int     `json:"postal_code"`
 	Rating       float64 `json:"stars"`
 	Photopath    string  `json:"hyperlink"`
+	Model        string  `json:"Model"`
 }
 
 // The Recommendatios struct will hold results returned from the Flask API
