@@ -5,7 +5,7 @@ package models
 type Business struct {
 	User         string  `json:"user"`
 	BusinessID   string  `json:"business_id"`
-	BusinessName string  `json:"name"`
+	BusinessName string  `json:"business_name"`
 	Address      string  `json:"address"`
 	City         string  `json:"city"`
 	State        string  `json:"state"`
@@ -67,7 +67,7 @@ type Recents struct {
 type Geomap map[string]float64
 
 type BusinessRating struct {
-	BusinessName  string  `json:"name"`
+	BusinessName  string  `json:"business_name"`
 	PlatformStars float64 `json:"stars"`
 	YourRating    int64   `json:"YourRating"`
 	Latitude      float64 `json:"latitude"`

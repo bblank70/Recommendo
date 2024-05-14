@@ -16,6 +16,7 @@ var TD = models.TemplateData{}
 
 // endpoints for local debug
 // var baseURL = "http://127.0.0.1:5000"
+
 // endpoints for cloud production
 var baseURL = "https://recommendoapi-pitlxbolsa-uc.a.run.app/"
 
