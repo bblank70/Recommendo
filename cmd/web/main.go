@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	//demo build event
+
 	http.HandleFunc("/", handlers.Home)
 	http.HandleFunc("/yelp-select", handlers.Yelp)
 	http.HandleFunc("/drinks", handlers.AlcoholAndDrinks)
